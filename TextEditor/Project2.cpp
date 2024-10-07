@@ -1,12 +1,11 @@
 #include <iostream>
 #include <string>
-using namespace std;
 
 void TextEditor();
-void addText(string text);
+void addText(std::string text);
 int deleteText(int k);
-string cursorLeft(int k);
-string cursorRight(int k);
+std::string cursorLeft(int k);
+std::string cursorRight(int k);
 const int max_size = 100000;
 char leftStack[max_size];
 char rightStack[max_size];
@@ -19,7 +18,7 @@ void TextEditor()
 	rightVertex = -1;
 }
 
-void addText(string text)
+void addText(std::string text)
 {
 	for (char a : text)
 	{
@@ -40,7 +39,7 @@ int deleteText(int k)
 	}
 	return count;
 }
-string cursorLeft(int k)
+std::string cursorLeft(int k)
 {
 	while (leftVertex >= 0 && k > 0)
 	{
@@ -50,10 +49,10 @@ string cursorLeft(int k)
 		}
 		k--;
 	}
-	string leftres(leftStack, leftVertex + 1);
+	std::string leftres(leftStack, leftVertex + 1);
 	return leftres;
 }
-string cursorRight(int k)
+std::string cursorRight(int k)
 {
 	while (rightVertex >= 0 && k > 0)
 	{
@@ -63,7 +62,7 @@ string cursorRight(int k)
 		}
 		k--;
 	}
-    string rightres(rightStack, rightVertex + 1);
+    std::string rightres(rightStack, rightVertex + 1);
 
 	return rightres;
 }
@@ -72,11 +71,11 @@ int main(int argc, char* argv[])
 {
 	TextEditor();
 	addText("abcgef");
-	cout << cursorLeft(2) << endl;
+	std::cout << cursorLeft(2) << std::endl;
 	addText("ghjklm");
-	cout << cursorRight(3) << endl;
-	cout << deleteText(5) << endl;
-	cout << cursorLeft(3) << endl;
+	std::cout << cursorRight(3) << std::endl;
+	std::cout << deleteText(5) << std::endl;
+	std::cout << cursorLeft(3) << std::endl;
 
 	return 0;
 }
